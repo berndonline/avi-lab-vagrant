@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
     end
   config.vm.synced_folder '.', '/vagrant', disabled: true
 #  config.vm.provision "file", source: "~/avi-images/avi_source_tar/docker_install-17.2.11-9014.tar.gz" , destination: "./docker_install-17.2.11-9014.tar.gz"
-  config.vm.provision :shell, path: "bootstrap.sh"
+  config.vm.provision :shell, path: "./helper_scripts/bootstrap.sh"
 end
 
   config.vm.define "avi-se-1" do |device|
@@ -34,7 +34,7 @@ end
       v.cpus = 2
     end
   config.vm.synced_folder '.', '/vagrant', disabled: true
-  config.vm.provision :shell, path: "bootstrap.sh"
+  config.vm.provision :shell, path: "./helper_scripts/bootstrap.sh"
 end
 
   config.vm.define "avi-se-2" do |device|
@@ -46,7 +46,7 @@ end
       v.cpus = 2
     end
   config.vm.synced_folder '.', '/vagrant', disabled: true
-  config.vm.provision :shell, path: "bootstrap.sh"
+  config.vm.provision :shell, path: "./helper_scripts/bootstrap.sh"
 end
 
 end
