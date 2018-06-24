@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "./helper_scripts/empty_playbook.yml"
     ansible.groups = {
-      "avi-controller" => ["avi-controller-1",],
+      "avi-controller" => ["avi-controller-1","avi-controller-2","avi-controller-3",],
       "avi-se" => ["avi-se-1","avi-se-2",],
       "avi:children" => ["avi-controller","avi-se",]
     }
@@ -79,23 +79,5 @@ end
   config.vm.synced_folder '.', '/vagrant', disabled: true
   config.vm.provision :shell, path: "./helper_scripts/bootstrap.sh"
 end
-
-  config.vm.define "origin-aio" do |device|
-    device.vm.host_name = "origin-aio"
-    device.vm.box = "centos/7"
-
-    device.vm.provider :libvirt do |v|
-      v.memory = 16384
-    end
-  config.vm.synced_folder '.', '/vagrant', disabled: false
-
-  config.vm.boot_timeout = 400
-
-  config.ssh.forward_agent = true
-  config.ssh.guest_port = 22
-  config.ssh.insert_key = false
-  device.vm.provision :shell , path: "./helper_scripts/config_server.sh"
-end
-
 
 end
