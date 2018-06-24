@@ -1,5 +1,4 @@
 # avi-lab-vagrant
-avi-lab-vagrant
 
 Here you find the topology files for my AVI Networks Vagrant Lab.
 
